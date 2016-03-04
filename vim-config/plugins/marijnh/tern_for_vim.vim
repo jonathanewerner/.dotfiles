@@ -1,2 +1,0 @@
-let tern_show_argument_hints=1
-let tern_show_signature_in_pum=1

@@ -1,30 +1,30 @@
-" Note the required backslash.
-let mapleader = "\<space>"
-
+" Force close vim
 nnoremap <silent> <leader>Q :wqall!<cr>
-nnoremap <silent> <leader>D :call CtrlPMRUAbsolute()<cr>
-nnoremap <silent> <leader>d :call CtrlPMRUAbsolute()<cr>
-nnoremap <silent> <leader>r :call CtrlPNormal()<cr>
-nnoremap <silent> <leader>R :call CtrlPCurFile()<cr>
-nnoremap <silent> <leader>W :call CtrlPCurFileParent()<cr>
+
+" Save
 nnoremap <leader>s :w!<CR>
+
+" Search
 nnoremap <leader>S :Ags<space>
 
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gd :Gvdiff<cr>
-
+" Close
 noremap <silent> <leader>x :close<cr>
-noremap <leader>m :Move <C-r>%
-nnoremap <silent> <leader>c :CtrlP ~/.dotfiles<cr>
 
-nnoremap <silent> <leader>1 :CtrlP ~/veloyo/veloyo/common<cr>
-nnoremap <leader>5 :e ~/veloyo/config-development/
+" Move file
+noremap <leader>m :Move <C-r>%
 
 " Replace words
 nnoremap <leader>u *Nciw
 vnoremap <leader>u y/<C-r>"<CR>Ngvc
 
+" Visual split
 nnoremap <silent> <leader>y :vs<cr>
-nnoremap <leader>n :CtrlP ~/Google\ Drive/txt/tech<cr>
+
+" Last buffer
 nnoremap <silent> <leader>o :b#<cr>
+
+" Folder shortcuts
+nnoremap <silent> <leader>c :CtrlP ~/.dotfiles<cr>
+nnoremap <silent> <leader>1 :CtrlP ~/veloyo/veloyo/common<cr>
+nnoremap <leader>5 :e ~/veloyo/config-development/
+nnoremap <leader>n :CtrlP ~/Google\ Drive/txt/tech<cr>

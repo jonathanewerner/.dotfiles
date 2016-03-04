@@ -1,65 +1,90 @@
 Source modules/vam
 
-Plugin ctrlpvim/ctrlp.vim
-Plugin nixprime/cpsm
+"
+" Core
+"
+Source modules/plugins/ctrlp
+
+Source modules/plugins/ultisnips
+
+Source modules/plugins/syntastic
+
+Source modules/plugins/fugitive
+
+Plugin tpope/vim-commentary
+
+Plugin vim-scripts/ReplaceWithRegister
+
+Plugin ervandew/supertab
+
+" Line/character paste (gcp, glp)
+Plugin vim-scripts/UnconditionalPaste
+
+" Readline style insertion
+Plugin jonathanewerner/vim-rsi
+
+Plugin jaxbot/semantic-highlight.vim
+
+Plugin gabesoft/vim-ags
+
+Plugin Valloric/YouCompleteMe
+  " autocmd CompleteDone * pclose
+
+" ----------------------------------------------------------------------------
 
 " Argumentative aids with manipulating and moving between function arguments.
 Plugin PeterRincker/vim-argumentative
 
-" enable repeating supported plugin maps with "."
+" Enable repeating supported plugin maps with "."
 Plugin tpope/vim-repeat
 
 " wisely add "end" in ruby, endfunction/endif/more in vim script
 Plugin tpope/vim-endwise
 
-" Vim plugin that provides additional text objects
-Plugin wellle/targets.vim
-
-Plugin vim-scripts/ReplaceWithRegister
-Plugin ton/vim-bufsurf
-Plugin tpope/vim-commentary
-Plugin tpope/vim-eunuch
-Plugin godlygeek/tabular
-Plugin tpope/vim-fugitive
-Plugin tommcdo/vim-fugitive-blame-ext
-Plugin Valloric/YouCompleteMe
-Plugin junegunn/vim-easy-align
-Plugin ervandew/supertab
-Plugin SirVer/ultisnips
+" more text objects
+Source modules/plugins/targets
 Plugin kana/vim-textobj-user
-Plugin bps/vim-textobj-python
-Plugin vim-scripts/UnconditionalPaste
-Plugin jonathanewerner/vim-rsi
-Plugin terryma/vim-expand-region
 Plugin kana/vim-textobj-line
 Plugin kana/vim-textobj-entire
-Plugin kana/vim-niceblock
-Plugin mattn/emmet-vim
-Plugin othree/html5.vim
-Plugin hail2u/vim-css3-syntax
-Plugin jonathanewerner/vim-javascript-syntax
-Plugin scrooloose/syntastic
-Plugin groenewege/vim-less
-Plugin elzr/vim-json
-Plugin drmingdrmer/vim-syntax-markdown
-Plugin flazz/vim-colorschemes
-Plugin chriskempson/vim-tomorrow-theme
-Plugin jonathanewerner/gruvbox
-colorscheme gruvbox
-Plugin jaxbot/semantic-highlight.vim
-Plugin gabesoft/vim-ags
-Plugin roman/golden-ratio
-Plugin osyo-manga/vim-over
 Plugin machakann/vim-textobj-delimited
 
-" A Vim plugin that always highlights the enclosing html/xml tags
+" Vim sugar for the UNIX shell commands that need it the most. Features include:
+Plugin tpope/vim-eunuch
+
+" :Verbose: Capture the output of a :verbose invocation into the preview window.
+Plugin tpope/vim-scriptease
+
+" Align stuff by <cr> in visual mode
+Source modules/plugins/vim-easy-align
+
+" Make |v_b_I| and |v_b_A| available in all kinds of Visual mode.
+" For example, you can type vipI# <Esc> instead of vip<C-v>0I# <Esc>.
+Plugin kana/vim-niceblock
+
+Plugin mattn/emmet-vim
+
+" Golden-ratio window splits
+Plugin roman/golden-ratio
+
+" Highlights html/xml tags
 Plugin Valloric/MatchTagAlways
 
-Plugin jonathanewerner/vim-surround
-Plugin junegunn/limelight.vim
 Plugin editorconfig/editorconfig-vim
 
 "
 " File-type specific
 "
+Plugin jonathanewerner/vim-javascript-syntax
+Plugin hail2u/vim-css3-syntax
+Plugin othree/html5.vim
 Plugin elixir-lang/vim-elixir
+Plugin groenewege/vim-less
+Plugin elzr/vim-json
+Plugin drmingdrmer/vim-syntax-markdown
+
+"
+" Colorscheme
+"
+Plugin jonathanewerner/gruvbox
+set background=dark
+colorscheme gruvbox

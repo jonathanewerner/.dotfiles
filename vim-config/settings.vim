@@ -1,7 +1,7 @@
 set nocompatible | filetype indent plugin on | syn on
 set breakindent
 set modeline
-Source initBackupDir
+Source modules/init-backup-dir
 call InitBackupDir()
 set noswapfile
 " set fileencodings=utf-8

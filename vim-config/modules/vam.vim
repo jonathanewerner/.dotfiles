@@ -1,3 +1,4 @@
+echom "bar"
 fun! EnsureVamIsOnDisk(plugin_root_dir)
   " windows users may want to use http://mawercer.de/~marc/vam/index.php
   " to fetch VAM, VAM-known-repositories and the listed plugins
@@ -26,6 +27,7 @@ fun! EnsureVamIsOnDisk(plugin_root_dir)
 endfun
 
 fun! SetupVAM()
+  echo "bar"
   " Set advanced options like this:
   " let g:vim_addon_manager = {}
   " let g:vim_addon_manager.key = value
@@ -77,7 +79,7 @@ call SetupVAM()
 
 
 function! LoadPluginSettingsFile(namePlugin)
-    let l:f=expand('~/.dotfiles/vim/plugins/' . a:namePlugin . ".vim")
+    let l:f=expand('~/.dotfiles/vim-config/plugins/' . a:namePlugin . ".vim")
     if filereadable(l:f)
        silent exec "source " . l:f
     endif
@@ -85,15 +87,6 @@ endfunction
 
 
 function! Plugin(arg)
-    call LoadPluginSettingsFile(a:arg)
-    " silent exec "Plug '" . a:arg . "'"
     silent exec "VAMActivate github:" . a:arg
 endfunction
 command! -nargs=1 Plugin call Plugin(<f-args>)
-
-
-" function! PluginFT(name, ft)
-"     LoadPluginSettingsFile(arg)
-"     silent exec "Plug '" . a:arg . "', {'on': '" . a:ft . "' }"
-" endfunction
-" command! -nargs=1 Plugin call Plugin(<f-args>)

@@ -52,10 +52,7 @@ vnoremap ? ?\V
 nnoremap / /\V
 vnoremap / /\V
 
-" nnoremap ` gt
-
-"move betw splits
-" map <Tab> :wincmd w\|:vert res 84<cr>
+" move between splits
 nnoremap <silent> <Tab> :wincmd w<cr>
 
 nnoremap <bs> zm
@@ -71,7 +68,6 @@ vnoremap p "0p
 "
 nnoremap <F2> :UltiSnipsEdit<cr>
 nnoremap <F3> :e ~/.cache/ctrlp/mru/cache.txt<cr>
-
 nnoremap <F5> :source %<cr>
 noremap <F6> :Invbg<CR>
 
@@ -79,6 +75,7 @@ noremap <F6> :Invbg<CR>
 map <F11> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 " inoremap ;d <C-w>
 
+Source modules/fill-line
 nnoremap <F12> :silent call FillLine( '-' )<cr>
 
 " select pasted
@@ -91,11 +88,6 @@ nnoremap <silent> <cr> :lnext<cr>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 
-"
-" Control/Alt ----------------------------------------------------------
-"
-nnoremap <M-u> :BufSurfBack<cr>
-nnoremap <M-p> :BufSurfForward<cr>
 
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
