@@ -1,0 +1,19 @@
+*.map
+.git
+*.jpg
+*.png
+migrations
+Android
+.cache
+.config
+.local
+.AndroidStudio
+.AndroidStudioBeta
+.*
+bin
+IdeaProjects
+dev/AndroidStudioProjects
+dev/archive
+veloyo
+Google Drive
+

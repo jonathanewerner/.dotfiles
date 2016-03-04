@@ -1,0 +1,56 @@
+# Sample gitconfig
+#
+
+[hub]
+        protocol = https
+[user]
+	name = Jonathan Werner
+        email = jwerner@posteo.de
+[credential]
+    helper = cache --timeout=86400
+[alias]
+        up = pull --rebase
+        deploy = subtree push --prefix dist origin gh-pages
+        co = checkout
+        ci = commit
+        nb = checkout -b
+        rbr = push origin --delete
+        rb = branch -d
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+	excludesfile = /home/jwerner/.gitignore
+        editor = gvim -f
+	autocrlf = input
+	pager = diff-so-fancy | less --tabs=1,5 -R
+[apply]
+        whitespace = nowarn
+[merge]
+    ff = false
+    tool = meld
+    keepBackup = false
+[diff]
+    tool = meld
+    prompt = false
+    keepBackup = false
+[help]
+        autocorrect = 0
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to surpress warning message
+        default = current
+[web]
+	browser = xdg-open
+[init]
+	# templatedir = ~/.git_template
+[pull]
+	rebase = preserve
+[gui]
+	editor = gvim --servername vim --remote-silent

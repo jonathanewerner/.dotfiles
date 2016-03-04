@@ -1,0 +1,24 @@
+m() {
+  mkdir $1 && cd $1
+}
+alias ls='ls --color=auto -hX --group-directories-first -t'
+alias ll='ls -o -hX --group-directories-first'
+alias ..='cd ..'
+alias ...='cd ../../..'
+alias h="history"
+alias e="vim"
+alias g="git"
+alias w="which"
+alias disk-usage="sudo du -h / 2> /dev/null | grep -P '^[0-9\.]+G'"
+alias pm2-logs-strict="pm2 logs --raw | bunyan --strict -c '!this.req'"
+alias pm2-logs="pm2 logs --raw | bunyan -c '!this.req || this.err' -l info -L -o short"
+alias pm2-logs-debug="pm2 logs --raw | bunyan -c '!this.req' -l debug -L -o short"
+pm2-start-all() {
+  pm2 start api-server.json
+  pm2 start service-web-client.json
+  pm2 start auth-server.json
+  pm2 start admin.json
+  pm2 start website.json
+}
+c() { builtin cd "$@" && ls; }
+export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/.vimrc' | source \$MYVIMRC"
