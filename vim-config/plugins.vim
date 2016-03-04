@@ -13,7 +13,8 @@ Source modules/plugins/fugitive
 
 Plugin tpope/vim-commentary
 
-Plugin vim-scripts/ReplaceWithRegister
+" ReplaceWithRegister replacement
+Source modules/plugins/regreplog
 
 Plugin ervandew/supertab
 

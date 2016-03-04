@@ -57,7 +57,8 @@ set magic
 " Remember info about open buffers on close
 set viminfo^=%
 
-set clipboard=unnamed
+" Set clipboard to x-clipboard (Ctrl-C/V)
+set clipboard=unnamedplus
 
 " folds
 set foldopen=block,hor,mark,percent,quickfix,search,tag,undo,jump
