@@ -41,7 +41,7 @@ alias rm='trash-put'
 alias upd='sudo pacman-key --refresh-keys && apacman -Syu --progress --purgebuild --skiptest --noconfirm'
 alias upd-noaur='apacman -Syu --noaur --progress --purgebuild --skiptest --noconfirm'
 alias upd-aur='apacman -Syu --auronly --progress --purgebuild --skiptest --noconfirm'
-alias R='reload!'
+alias R='source ~/.zshrc'
 
 alias ls='ls --color=auto -hX --group-directories-first -t'
 alias ll='ls -o -hX --group-directories-first'

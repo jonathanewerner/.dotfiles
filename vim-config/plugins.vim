@@ -88,6 +88,6 @@ Plugin drmingdrmer/vim-syntax-markdown
 "
 " Colorscheme
 "
-Plugin jonathanewerner/gruvbox
+Plugin jonathanewerner/semantic-highlight-base-colorscheme
 set background=dark
-colorscheme gruvbox
+colorscheme semantic-highlight-base-colorscheme
