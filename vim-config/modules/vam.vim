@@ -77,7 +77,7 @@ call SetupVAM()
 
 
 function! LoadPluginSettingsFile(namePlugin)
-    let l:f=expand('~/.vim-config/plugins/' . a:namePlugin . ".vim")
+    let l:f=expand('~/.dotfiles/vim/plugins/' . a:namePlugin . ".vim")
     if filereadable(l:f)
        silent exec "source " . l:f
     endif

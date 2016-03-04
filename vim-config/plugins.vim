@@ -1,35 +1,31 @@
-echom '[plugins]'
-"Source vundleInit
-" call plug#begin('~/.vim/plugged')
-
-Source setupFunctions
-" Plugin gmarik/vundle
-
-"Source filePlugins
-Source colorschemes
+Source modules/vam
 
 Plugin ctrlpvim/ctrlp.vim
-Plugin JazzCore/ctrlp-cmatcher
-Plugin mkitt/tabline.vim
+Plugin nixprime/cpsm
+
+" Argumentative aids with manipulating and moving between function arguments.
 Plugin PeterRincker/vim-argumentative
+
+" enable repeating supported plugin maps with "."
 Plugin tpope/vim-repeat
+
+" wisely add "end" in ruby, endfunction/endif/more in vim script
 Plugin tpope/vim-endwise
+
+" Vim plugin that provides additional text objects
 Plugin wellle/targets.vim
+
 Plugin vim-scripts/ReplaceWithRegister
 Plugin ton/vim-bufsurf
 Plugin tpope/vim-commentary
 Plugin tpope/vim-eunuch
 Plugin godlygeek/tabular
-Plugin rking/ag.vim
 Plugin tpope/vim-fugitive
 Plugin tommcdo/vim-fugitive-blame-ext
 Plugin Valloric/YouCompleteMe
-Plugin jpalardy/vim-slime
 Plugin junegunn/vim-easy-align
 Plugin ervandew/supertab
 Plugin SirVer/ultisnips
-Plugin kien/rainbow_parentheses.vim
-Plugin ivan-cukic/vim-ctrlp-switcher
 Plugin kana/vim-textobj-user
 Plugin bps/vim-textobj-python
 Plugin vim-scripts/UnconditionalPaste
@@ -37,10 +33,7 @@ Plugin jonathanewerner/vim-rsi
 Plugin terryma/vim-expand-region
 Plugin kana/vim-textobj-line
 Plugin kana/vim-textobj-entire
-Plugin tpope/vim-dispatch
-Plugin gregsexton/gitv
 Plugin kana/vim-niceblock
-Plugin thinca/vim-localrc
 Plugin mattn/emmet-vim
 Plugin othree/html5.vim
 Plugin hail2u/vim-css3-syntax
@@ -58,16 +51,15 @@ Plugin gabesoft/vim-ags
 Plugin roman/golden-ratio
 Plugin osyo-manga/vim-over
 Plugin machakann/vim-textobj-delimited
+
+" A Vim plugin that always highlights the enclosing html/xml tags
 Plugin Valloric/MatchTagAlways
-Plugin thinca/vim-textobj-function-javascript
-Plugin elixir-lang/vim-elixir
-Plugin osyo-manga/vim-hopping
-Plugin MartinLafreniere/vim-PairTools
-Plugin zah/nim.vim
-Plugin tpope/vim-scriptease
+
 Plugin jonathanewerner/vim-surround
-Plugin keith/gist.vim
-Plugin junegunn/goyo.vim
 Plugin junegunn/limelight.vim
 Plugin editorconfig/editorconfig-vim
-Plugin nixprime/cpsm
+
+"
+" File-type specific
+"
+Plugin elixir-lang/vim-elixir

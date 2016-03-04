@@ -1,3 +1,4 @@
+set nocompatible | filetype indent plugin on | syn on
 set breakindent
 set modeline
 Source initBackupDir
@@ -12,8 +13,6 @@ set softtabstop=2
 set expandtab
 set smarttab
 set winfixheight
-" set statusline+=%F
-
 
 " update semantic highlight more often
 set updatetime=500
@@ -220,15 +219,8 @@ set iskeyword=a-z,A-Z,_,.,39
 set autoread
 set shell=/usr/bin/zsh
 
-
 " auto strip white space on save
 autocmd BufWritePre * :%s/\s\+$//e
-
-" augroup syntastic_eslint
-"   autocmd CursorHold *.js nested update
-"   autocmd CursorHold *.jsx nested update
-" augroup END
-" set updatetime=2000
 
 augroup always_show_gutter_bar
   autocmd!
@@ -236,16 +228,4 @@ augroup always_show_gutter_bar
   autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 augroup END
 
-" from https://github.com/spf13/spf13-vim/blob/master/.vimrc
-if has('statusline')
-  set laststatus=2
-  " Broken down into easily includeable segments
-  " set statusline=%{getcwd()}/          " current dir
-  set statusline+=%<%f\    " Filename
-  set statusline+=%w%h%m%r " Options
-  set statusline+=%#error#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  let g:syntastic_enable_signs=1
-  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
+Source modules/statusline
