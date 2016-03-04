@@ -41,6 +41,9 @@ Plugin tpope/vim-repeat
 " wisely add "end" in ruby, endfunction/endif/more in vim script
 Plugin tpope/vim-endwise
 
+" Sensible defaults
+Plugin tpope/vim-sensible
+
 " more text objects
 Source modules/plugins/targets
 Plugin kana/vim-textobj-user
