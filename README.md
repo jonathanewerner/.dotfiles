@@ -8,6 +8,8 @@ Files worth looking at:
 - `vimrc` & `vim-config` for loads of freshly cleaned up, modularized & mostly commented vim goodness. 
 
 ### setup
+You probably don't wanna grab all of those dotfiles and install them in your home directory. Dotfiles grow over time and are very personal. So the following instructions are mostly for me to remember. :)
+
 This repo uses [rcm](https://github.com/thoughtbot/rcm) by thoughtbot ([Tutorial](http://thoughtbot.github.io/rcm/rcm.7.html)).
 Install that tool via your package manager, then
 
