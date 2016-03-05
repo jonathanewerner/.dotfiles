@@ -1,5 +1,5 @@
 # dotfiles
-These are my dotfiles, meticulously slimmed down after having accumulated way to much cruft over the last years.
+These are my dotfiles, meticulously slimmed down after having accumulated [way to much cruft](https://github.com/jonathanewerner/dotfiles-old) over the last years.
 I'm pretty happy with the amount of files right now. There might be some nuggets for you in here.
 
 Files worth looking at: 
