@@ -1,13 +1,14 @@
 set nocompatible | filetype indent plugin on | syn on
 
-let $VIM_CONFIG_DIR="~/.dotfiles/vim-config"
+let $VIM_CONFIG_DIR="/home/jwerner/.dotfiles/vim-config"
+let $DOTFILES_DIR="/home/jwerner/.dotfiles"
 source $VIM_CONFIG_DIR/modules/helpers/Source.vim
 
 let mapleader = "\<space>"
 
 Source plugins
 Source settings
-Source filetype-settings
+Source autocmds
 Source mappings-normal
 Source mappings-leader
 

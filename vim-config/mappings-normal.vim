@@ -1,3 +1,6 @@
+"
+" Normal keys -----------------------------------------------------------------------------------------------
+"
 inoremap <esc> <esc>l
 
 nnoremap Q q
@@ -61,10 +64,18 @@ nnoremap <bs> zm
 noremap gV `[v`]
 
 " insert mode easy paste
-vnoremap p "0p
+
+" select pasted
+nnoremap <expr> `` '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+nnoremap <silent> <cr> :lnext<cr>
+
+" In the quickfix window, <CR> is used to jump to the error under the
+" cursor, so undefine the mapping there.
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 "
-" Function keys ----------------------------------------------------------
+" Function keys -----------------------------------------------------------------------------------------------
 "
 nnoremap <F2> :UltiSnipsEdit<cr>
 nnoremap <F3> :e ~/.cache/ctrlp/mru/cache.txt<cr>
@@ -78,20 +89,20 @@ map <F11> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 Source modules/fill-line
 nnoremap <F12> :silent call FillLine( '-' )<cr>
 
-" select pasted
-nnoremap <expr> `` '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-nnoremap <silent> <cr> :lnext<cr>
-
-" In the quickfix window, <CR> is used to jump to the error under the
-" cursor, so undefine the mapping there.
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-
-
-
+"
+" Ctrl/Alt keys --------------------------------------------------------------------------------------------
+"
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
 vnoremap <C-v> "+p
 vnoremap <C-c> "+y
 inoremap <C-v> <c-o>:set paste<cr><C-R>+<c-o>:set nopaste<cr>
+
+
+" We want these for tab navigation when using help files
+nnoremap <silent> <M-1> 1gt
+nnoremap <silent> <M-2> 2gt
+nnoremap <silent> <M-3> 3gt
+nnoremap <silent> <M-4> 4gt
+nnoremap <silent> <M-5> 5gt
