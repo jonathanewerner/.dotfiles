@@ -1,0 +1,7 @@
+[roxterm profile]
+font=Consolas 14
+allow_bold=1
+scroll_on_output=0
+scroll_on_keystroke=1
+scrollback_lines=100000
+saturation=0.713115
