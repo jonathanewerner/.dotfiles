@@ -82,10 +82,6 @@ nnoremap <F3> :e ~/.cache/ctrlp/mru/cache.txt<cr>
 nnoremap <F5> :source %<cr>
 noremap <F6> :Invbg<CR>
 
-" syntax highlighting debugging
-map <F11> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
-" inoremap ;d <C-w>
-
 Source modules/fill-line
 nnoremap <F12> :silent call FillLine( '-' )<cr>
 

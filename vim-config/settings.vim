@@ -1,3 +1,12 @@
+" i'm not really sure about this
+" should prevents indentation on paste
+set paste
+" Word boundaries. IMPORTANT>
+" ' marks a word boundary
+set iskeyword-='
+" . marks a word boundary
+set iskeyword-=.
+
 " Disable startup splash screen
 set shortmess+=I
 
@@ -114,9 +123,6 @@ endif
 autocmd VimEnter *
 \ highlight ModeMsg guifg=bg guibg=bg | highlight WarningMsg guifg=bg
 
-set iskeyword+=:
-"for haskell (The 39 is for the prime character)
-set iskeyword=a-z,A-Z,_,.,39
 
 " auto cd
   " A standalone function to set the working directory to the project's root, or

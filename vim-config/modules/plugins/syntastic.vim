@@ -1,5 +1,8 @@
 Plugin scrooloose/syntastic
 
+" Lint Vimscript (Syntastic)
+Plugin dbakker/vim-lint
+
 let g:syntastic_check_on_open = 0
 let g:syntastic_csslint_options = "--warnings=none"
 

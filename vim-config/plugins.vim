@@ -11,6 +11,8 @@ Source modules/plugins/syntastic
 
 Source modules/plugins/fugitive
 
+Source modules/plugins/semantic-highlight
+
 Plugin tomtom/tcomment_vim
 
 " ReplaceWithRegister replacement
@@ -24,7 +26,6 @@ Plugin vim-scripts/UnconditionalPaste
 " Readline style insertion
 Plugin jonathanewerner/vim-rsi
 
-Plugin jaxbot/semantic-highlight.vim
 
 Plugin gabesoft/vim-ags
 
@@ -74,6 +75,9 @@ Plugin roman/golden-ratio
 Plugin Valloric/MatchTagAlways
 
 Plugin editorconfig/editorconfig-vim
+
+" Syntax highlighting debugging (Shift-F10)
+Plugin gerw/vim-HiLinkTrace
 
 "
 " File-type specific

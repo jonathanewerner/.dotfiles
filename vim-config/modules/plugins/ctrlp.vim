@@ -24,9 +24,9 @@ let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_mruf_save_on_update = 1
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:40'
 let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-let g:ctrlp_mruf_max=50
+let g:ctrlp_mruf_max=100
 
 "
 " Functions
