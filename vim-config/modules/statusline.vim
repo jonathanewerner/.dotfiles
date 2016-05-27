@@ -6,8 +6,9 @@ if has('statusline')
   set statusline+=%<%f\    " Filename
   set statusline+=%w%h%m%r " Options
   set statusline+=%#error#
-  set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
+  set statusline+=%{SyntasticStatuslineFlag()}
   let g:syntastic_enable_signs=1
   set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
+

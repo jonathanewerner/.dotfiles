@@ -7,38 +7,38 @@ nnoremap Q q
 nnoremap l o
 nnoremap o l
 
-vnoremap l o
-vnoremap o l
+xnoremap l o
+xnoremap o l
 
 nnoremap L O
 nnoremap O L
 
-vnoremap L O
-vnoremap O L
+xnoremap L O
+xnoremap O L
 
 nnoremap , n
 nnoremap ; N
 nnoremap n gj
 
-vnoremap j n
-vnoremap n gj
+xnoremap j n
+xnoremap n gj
 
 nnoremap k e
 noremap e gk
 
-vnoremap k e
-vnoremap e gk
+xnoremap k e
+xnoremap e gk
 
 nnoremap K E
 nnoremap E 10k
 
 nnoremap h y
 onoremap h y
-vnoremap h y
+xnoremap h y
 nnoremap H y$
 
 nnoremap y h
-vnoremap y h
+xnoremap y h
 
 " deactivate Q / ex mode
 nnoremap Q <nop>
@@ -49,11 +49,20 @@ nnoremap 0 ^
 
 " make yanking behave live c and d
 nnoremap H y$
+
 " easier searching
-nnoremap ? ?\V
-vnoremap ? ?\V
-nnoremap / /\V
-vnoremap / /\V
+
+" Default to normal characters (no regexes
+" nnoremap ? ?\V
+" vnoremap ? ?\V
+" nnoremap / /\V
+" vnoremap / /\V
+
+" Default to perl regexes
+nnoremap ? ?\v
+xnoremap ? ?\v
+nnoremap / /\v
+xnoremap / /\v
 
 " move between splits
 nnoremap <silent> <Tab> :wincmd w<cr>
@@ -80,6 +89,18 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 nnoremap <F2> :UltiSnipsEdit<cr>
 nnoremap <F3> :e ~/.cache/ctrlp/mru/cache.txt<cr>
 nnoremap <F5> :source %<cr>
+
+function! ReverseBackground()
+ let Mysyn=&syntax
+ if &bg=="light"
+ se bg=dark
+ else
+ se bg=light
+ endif
+ syn on
+ exe "set syntax=" . Mysyn
+endfunction
+command! Invbg call ReverseBackground()
 noremap <F6> :Invbg<CR>
 
 Source modules/fill-line
@@ -102,3 +123,11 @@ nnoremap <silent> <M-2> 2gt
 nnoremap <silent> <M-3> 3gt
 nnoremap <silent> <M-4> 4gt
 nnoremap <silent> <M-5> 5gt
+
+" Sorting rules
+vnoremap <F9> :sort <CR>
+" <S-F9>: by '/" enclosed string
+vnoremap <S-F9> :sort '[\'"].*[\'"]' r<CR>
+nnoremap <S-F9> vip :sort '[\'"].*[\'"]' r<CR>
+
+" nnoremap <silent> :: :call ctrlp#init(ctrlp#commandline#id())<cr>

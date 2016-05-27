@@ -1,7 +1,6 @@
 " Force close vim
-nnoremap <silent> <leader>Q :wqall!<cr>
 
-" Save
+nnoremap <silent> <leader>Q :wqall!<cr>
 nnoremap <leader>s :w!<CR>
 
 " Search

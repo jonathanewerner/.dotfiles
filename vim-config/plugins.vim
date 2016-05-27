@@ -6,12 +6,19 @@ Source modules/vam
 Source modules/plugins/ctrlp
 
 Source modules/plugins/ultisnips
+Plugin jonathanewerner/vim-javascript-snippets
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "UltiSnips/javascript-no-semicolons"]
 
 Source modules/plugins/syntastic
 
 Source modules/plugins/fugitive
 
-Source modules/plugins/semantic-highlight
+" Source modules/plugins/semantic-highlight
+
+" Source modules/plugins/pair-tools
+" Plugin jiangmiao/auto-pairs
+Plugin vim-scripts/auto-pairs-gentle
+" Plugin kana/vim-smartinput
 
 Plugin tomtom/tcomment_vim
 
@@ -30,6 +37,8 @@ Plugin jonathanewerner/vim-rsi
 Plugin gabesoft/vim-ags
 
 Plugin Valloric/YouCompleteMe
+" Don't special case completion after dot (".")
+let g:ycm_filetype_specific_completion_to_disable = { 'javascript': 1 }
   " autocmd CompleteDone * pclose
 
 " ----------------------------------------------------------------------------
@@ -79,10 +88,18 @@ Plugin editorconfig/editorconfig-vim
 " Syntax highlighting debugging (Shift-F10)
 Plugin gerw/vim-HiLinkTrace
 
+" Surf buffers back and forth
+Plugin ton/vim-bufsurf
+
+Plugin embear/vim-localvimrc
+let g:localvimrc_sandbox=0
+let g:localvimrc_ask=0
+
 "
 " File-type specific
 "
-Plugin jonathanewerner/vim-javascript-syntax
+Plugin jonathanewerner/vim-javascript-indent
+" Plugin jonathanewerner/vim-javascript-syntax
 Plugin hail2u/vim-css3-syntax
 Plugin othree/html5.vim
 Plugin elixir-lang/vim-elixir
@@ -90,9 +107,26 @@ Plugin groenewege/vim-less
 Plugin elzr/vim-json
 Plugin drmingdrmer/vim-syntax-markdown
 
+" Plugin othree/yajs.vim
+Plugin pangloss/vim-javascript
+Plugin mxw/vim-jsx
+" Plugin othree/es.next.syntax.vim
+
 "
 " Colorscheme
 "
-Plugin jonathanewerner/semantic-highlight-base-colorscheme
-set background=dark
-colorscheme semantic-highlight-base-colorscheme
+set background=light
+" Plugin morhetz/gruvbox
+" colorscheme gruvbox
+" let g:gruvbox_bold=1
+" let g:gruvbox_contrast_dark=1
+" let g:gruvbox_contrast_light=1
+" let g:gruvbox_improved_strings=1
+
+" Plugin jonathanewerner/semantic-highlight-base-colorscheme
+" colorscheme semantic-highlight-base-colorscheme
+
+Plugin jonathanfilip/vim-lucius
+
+Plugin NLKNguyen/papercolor-theme
+colorscheme PaperColor

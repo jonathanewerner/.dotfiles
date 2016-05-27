@@ -6,7 +6,7 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
 " set guifont=Meslo\ LG\ S\ DZ\ 10
-set guifont=Consolas\ 16
+set guifont=Input\ Mono\ Regular\ 13
 " set guifont=Incso
 " set guioptions-=e
 " colorscheme grb256

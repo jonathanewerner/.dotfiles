@@ -54,7 +54,7 @@ node_modules
 *.swp
 
 undo/
-packages/
 .git/
 Session.vim
 .agignore
+.lvimrc

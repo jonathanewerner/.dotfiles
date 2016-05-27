@@ -48,6 +48,7 @@ augroup custom.less
   autocmd!
   au BufRead *.less set ft=less
   au BufRead *.less.module set ft=less
+  au BufRead *.less.global set ft=less
 augroup END
 
 " source dotfiles -----------------------------------------------------------------
