@@ -3,7 +3,6 @@ init.author.email=jwe@posteo.de
 init.author.url=http://jonathanwerner.net/
 init.licence=MIT
 progress=false
-//registry.npmjs.org/:_authToken=6de8e2f0-05a1-40be-97b0-109dd4b1fed7
 username=jonathanewerner
 email=jwe@posteo.de
 loglevel=warn
