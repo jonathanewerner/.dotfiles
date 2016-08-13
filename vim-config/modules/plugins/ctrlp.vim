@@ -1,7 +1,8 @@
 "
 " Plugins
 "
-Plugin ctrlpvim/ctrlp.vim
+" Plugin ctrlpvim/ctrlp.vim
+Plugin kien/ctrlp.vim
 " We need both matchers because cpsm's MRU behaviour is wacky
 Plugin nixprime/cpsm
 Plugin JazzCore/ctrlp-cmatcher
@@ -14,8 +15,9 @@ let g:ctrlp_extensions = ['commandline']
 " Settings
 "
 let g:ctrlp_prompt_mappings = {
-\ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
-\ 'PrtSelectMove("k")':   ['<c-e>', '<up>'],
+\ 'PrtSelectMove("j")':   ['<D-n>', '<down>'],
+\ 'PrtSelectMove("k")':   ['<D-e>', '<up>'],
+\ 'CreateNewFile()':      ['<D-y>'],
 \ 'PrtHistory(-1)':       [''],
 \ 'PrtCurEnd()':          [''],
 \ 'ToggleRegex()':        [''],
@@ -73,8 +75,15 @@ endfunction
 "
 " Mappings
 "
+
 nnoremap <silent> <leader>D :call CtrlPMRUAbsolute()<cr>
 nnoremap <silent> <leader>d :call CtrlPMRUAbsolute()<cr>
 nnoremap <silent> <leader>r :call CtrlPNormal()<cr>
 nnoremap <silent> <leader>R :call CtrlPCurFile()<cr>
 nnoremap <silent> <leader>W :call CtrlPCurFileParent()<cr>
+
+" nnoremap <silent> <leader>D :call CtrlPMRUAbsolute()<cr>
+" nnoremap <silent> <leader>d :CommandTMRU<cr>
+" nnoremap <silent> <leader>r :CommandT<cr>
+" nnoremap <silent> <leader>R :call CtrlPCurFile()<cr>
+" nnoremap <silent> <leader>W :call CtrlPCurFileParent()<cr>

@@ -15,9 +15,9 @@ Source modules/plugins/fugitive
 
 " Source modules/plugins/semantic-highlight
 
-" Source modules/plugins/pair-tools
+Source modules/plugins/pair-tools
 " Plugin jiangmiao/auto-pairs
-Plugin vim-scripts/auto-pairs-gentle
+" Plugin vim-scripts/auto-pairs-gentle
 " Plugin kana/vim-smartinput
 
 Plugin tomtom/tcomment_vim
@@ -75,13 +75,13 @@ Source modules/plugins/vim-easy-align
 " For example, you can type vipI# <Esc> instead of vip<C-v>0I# <Esc>.
 Plugin kana/vim-niceblock
 
-Plugin mattn/emmet-vim
+" Plugin mattn/emmet-vim
 
 " Golden-ratio window splits
 Plugin roman/golden-ratio
 
 " Highlights html/xml tags
-Plugin Valloric/MatchTagAlways
+" Plugin Valloric/MatchTagAlways
 
 Plugin editorconfig/editorconfig-vim
 
@@ -89,27 +89,27 @@ Plugin editorconfig/editorconfig-vim
 Plugin gerw/vim-HiLinkTrace
 
 " Surf buffers back and forth
-Plugin ton/vim-bufsurf
+" Plugin ton/vim-bufsurf
 
-Plugin embear/vim-localvimrc
-let g:localvimrc_sandbox=0
-let g:localvimrc_ask=0
+" Plugin embear/vim-localvimrc
+" let g:localvimrc_sandbox=0
+" let g:localvimrc_ask=0
 
 "
 " File-type specific
 "
-Plugin jonathanewerner/vim-javascript-indent
-" Plugin jonathanewerner/vim-javascript-syntax
+Plugin gavocanov/vim-js-indent
+Plugin jonathanewerner/vim-javascript-syntax
 Plugin hail2u/vim-css3-syntax
 Plugin othree/html5.vim
-Plugin elixir-lang/vim-elixir
+" Plugin elixir-lang/vim-elixir
 Plugin groenewege/vim-less
 Plugin elzr/vim-json
 Plugin drmingdrmer/vim-syntax-markdown
 
 " Plugin othree/yajs.vim
-Plugin pangloss/vim-javascript
-Plugin mxw/vim-jsx
+" Plugin pangloss/vim-javascript
+" Plugin mxw/vim-jsx
 " Plugin othree/es.next.syntax.vim
 
 "
@@ -122,11 +122,26 @@ set background=light
 " let g:gruvbox_contrast_dark=1
 " let g:gruvbox_contrast_light=1
 " let g:gruvbox_improved_strings=1
+" Plugin pbrisbin/vim-colors-off
+" colorscheme off
 
 " Plugin jonathanewerner/semantic-highlight-base-colorscheme
 " colorscheme semantic-highlight-base-colorscheme
 
-Plugin jonathanfilip/vim-lucius
+" Plugin jonathanfilip/vim-lucius
 
 Plugin NLKNguyen/papercolor-theme
 colorscheme PaperColor
+
+Plugin coot/CRDispatcher
+Plugin coot/EnchantedVim
+let g:VeryMagicSubstitute = 1
+let g:VeryMagicGlobal = 1
+let g:VeryMagicRange = 1
+
+Plugin vim-scripts/BufOnly.vim
+Plugin tpope/vim-abolish
+" Plugin keith/swift.vim
+Plugin kballard/vim-swift
+" Plugin vim-scripts/groovyindent
+Plugin vim-scripts/groovyindent-unix

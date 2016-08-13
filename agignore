@@ -11,10 +11,10 @@ Android
 .AndroidStudioBeta
 .*
 bin
+build
 IdeaProjects
 dev/AndroidStudioProjects
 dev/archive
 veloyo
 Google Drive
-build
-
+*.log

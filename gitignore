@@ -58,3 +58,5 @@ undo/
 Session.vim
 .agignore
 .lvimrc
+
+npm-debug.log

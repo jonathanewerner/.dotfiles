@@ -77,7 +77,7 @@ noremap gV `[v`]
 " select pasted
 nnoremap <expr> `` '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-nnoremap <silent> <cr> :lnext<cr>
+" nnoremap <silent> <cr> :lnext<cr>
 
 " In the quickfix window, <CR> is used to jump to the error under the
 " cursor, so undefine the mapping there.
@@ -131,3 +131,12 @@ vnoremap <S-F9> :sort '[\'"].*[\'"]' r<CR>
 nnoremap <S-F9> vip :sort '[\'"].*[\'"]' r<CR>
 
 " nnoremap <silent> :: :call ctrlp#init(ctrlp#commandline#id())<cr>
+
+" always regex very magic
+" nnoremap / /\v
+" xnoremap / /\v
+" cnoremap %s/ %smagic/
+" cnoremap \>s/ \>smagic/
+" nnoremap :g/ :g/\v
+" nnoremap <right> :bn<cr>
+" nnoremap <left> :bp<cr>

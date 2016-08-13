@@ -1,7 +1,7 @@
 set nocompatible | filetype indent plugin on | syn on
 
-let $VIM_CONFIG_DIR="/home/jwerner/.dotfiles/vim-config"
-let $DOTFILES_DIR="/home/jwerner/.dotfiles"
+let $VIM_CONFIG_DIR="/Users/jwerner/.dotfiles/vim-config"
+let $DOTFILES_DIR="/Users/jwerner/.dotfiles"
 source $VIM_CONFIG_DIR/modules/helpers/Source.vim
 
 let mapleader = "\<space>"
@@ -33,3 +33,6 @@ Source modules/restore-screen-setup
 " set verbosefile=/home/jwerner/vim-debug-log.txt
 
 " let g:loaded_matchparen=1
+
+" NEOVIM
+let g:python_host_prog = '/usr/local/bin/python'

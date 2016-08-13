@@ -1,3 +1,7 @@
+set lazyredraw
+" supposed to be faster
+set re=1
+
 " i'm not really sure about this
 " should prevents indentation on paste
 set paste
@@ -67,7 +71,8 @@ set magic
 set viminfo^=%
 
 " Set clipboard to x-clipboard (Ctrl-C/V)
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
+set clipboard=unnamed
 
 " folds
 set foldopen=block,hor,mark,percent,quickfix,search,tag,undo,jump
@@ -116,12 +121,14 @@ command! -bar SetupHelp call SetupHelp()
 set mouse=a
 
 " hide bottom messages
-if has("patch-7.4.314")
-  set shortmess+=c
-endif
+" if has("patch-7.4.314")
+"   set shortmess+=c
+" endif
 
-autocmd VimEnter *
-\ highlight ModeMsg guifg=bg guibg=bg | highlight WarningMsg guifg=bg
+" This makes the "recording macro" message invisible -- not so great.
+" What was the reason for adding this?
+" autocmd VimEnter *
+" \ highlight ModeMsg guifg=bg guibg=bg | highlight WarningMsg guifg=bg
 
 
 " auto cd
@@ -139,7 +146,7 @@ function! s:setcwd()
 endfunction
 autocmd BufEnter * call s:setcwd()
 
-set shell=/usr/bin/zsh
+set shell=/usr/local/bin/zsh
 
 " auto strip white space on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -151,3 +158,11 @@ augroup always_show_gutter_bar
 augroup END
 
 Source modules/statusline
+
+
+" NEOVIM-DOT-APP
+" set noshowcmd
+" set nolazyredraw
+
+" Don't jump one char left when leaving insert mode
+" au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])

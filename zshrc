@@ -8,6 +8,9 @@ eval "$(rbenv init -)"
 # The following chars are word boundaries (relevant for C-w)
 export WORDCHARS='*?_.[]~=&;!#$%^(){}<>'
 
+# Don't want autocorrect suggestions
+unsetopt correct_all
+
 source ~/.aliases
 
 # matches case insensitive for lowercase
@@ -32,12 +35,6 @@ setopt auto_cd
 setopt completealiases
 setopt HIST_IGNORE_DUPS
 
-function chpwd() {
-    emulate -L zsh
-    ls -t
-    echo "$PWD" > ~/.cwd;
-}
-export cd
 alias cwd='cd "$(cat ~/.cwd)"'
 
 # ------------------------------------------------------------------------------
@@ -49,6 +46,12 @@ globalias() {
    zle self-insert
 }
 
+function chpwd() {
+    emulate -L zsh
+    ls
+}
+export cd
+
 zle -N globalias
 
 bindkey " " globalias
@@ -57,3 +60,9 @@ bindkey -M isearch " " magic-space # normal space during searches
 # ------------------------------------------------------------------------------
 
 source <(npm completion)
+
+# http://superuser.com/questions/836883/increasing-yosemite-maxfile-limit-for-application
+ulimit -n 65536
+ulimit -u 2048
+
+source /Users/jwerner/bin/arc/arcanist/resources/shell/bash-completion
