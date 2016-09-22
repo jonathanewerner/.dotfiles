@@ -11,7 +11,7 @@ set guioptions-=L  "remove left-hand scroll bar
 " change this interactively: "set guifont=*", then "set guifont?"
 " set guifont=InputMono:h14
 set guifont=Fira\ Code:h15
-set macligatures
+" set macligatures
 " set linespace=6
 set linespace=6
 " set guioptions-=e

@@ -64,5 +64,3 @@ source <(npm completion)
 # http://superuser.com/questions/836883/increasing-yosemite-maxfile-limit-for-application
 ulimit -n 65536
 ulimit -u 2048
-
-source /Users/jwerner/bin/arc/arcanist/resources/shell/bash-completion

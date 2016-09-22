@@ -1,6 +1,6 @@
 #/usr/bin/env sh
 e() {
-  gvim --servername vim --remote-silent "$@"
+  mvim --servername vim --remote-silent "$@"
 }
 alias ec="mvim --servername vim"
 
@@ -16,9 +16,9 @@ untar() {
   tar -zxvf $1
 }
 
-f() {
-ag --depth 3 --smart-case --hidden --follow -g "." | fzf -e
-}
+# f() {
+# ag --depth 3 --smart-case --hidden --follow -g "." | fzf -e
+# }
 
 orphans() {
   if [[ ! -n $(pkg-list_true_orphans) ]]; then
@@ -90,7 +90,7 @@ alias rn-debug="adb shell input keyevent 82 && sleep 0.3 && adb shell input keye
 alias rn-menu="adb shell input keyevent 82"
 alias rn-stop="adb shell am force-stop com.veloyonative"
 alias rn-log="adb logcat *:S ReactNative:I ReactNativeJS:I"
-alias rn-start="watchman watch-del-all && export NODE_ENV=native && react-native start --reset-cache"
+alias rn-start="watchman watch-del-all && watchman-setup && export NODE_ENV=native && react-native start"
 # alias npm="pnpm"
 alias g="git"
 alias ws="nohup ~/bin/WebStorm-145.184.5/bin/webstorm.sh"
@@ -142,9 +142,18 @@ ls-last() {
 
 # ❯ ag "^import.+wish-react-[\w-]+" --nofilename | grep -o "wish-react-[\w-]+" | sort |  uniq | sed "s/^/'/" | sed "s/$/',/"
 add() {
-  (cd ~/wish/wish/packages/$1 && peerlink && cd ~/wish/wish/partner && npm run updatePackageJson && npm run install:native && peerlink $1)
+  # (cd ~/wish/wish/packages/$1 && peerlink && cd ~/wish/wish/partner && npm run updatePackageJson && npm run install:native && peerlink $1)
+  (cd ~/wish/wish/packages/$1 && peerlink && cd ~/wish/wish/partner && peerlink $1)
 }
 
 push() {
   fastlane codepush environment:"int" variant_name:"hermes" && fastlane codepush environment:"int" variant_name:"veloyo"
+}
+
+font-update() {
+		env cp -rf ~/Downloads/fontello/config.json ~/wish/wish/packages/wish-react-svg/iconFontConfig.ios.json
+		env cp -rf ~/Downloads/fontello/config.json ~/wish/wish/partner/node_modules/wish-react-svg/iconFontConfig.ios.json
+		env cp -rf ~/Downloads/fontello/config.json ~/wish/wish/partner/ios/assets/icon-font/hermes-partner/config.json
+		env cp -rf ~/Downloads/fontello/font/fontello.ttf ~/wish/wish/partner/ios/assets/icon-font/hermes-partner/fontello.ttf
+		env cp -rf ~/Downloads/fontello/font/fontello.ttf ~/wish/wish/partner/ios
 }

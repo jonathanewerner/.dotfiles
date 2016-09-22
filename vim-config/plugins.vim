@@ -145,3 +145,6 @@ Plugin tpope/vim-abolish
 Plugin kballard/vim-swift
 " Plugin vim-scripts/groovyindent
 Plugin vim-scripts/groovyindent-unix
+
+Plugin flowtype/vim-flow
+let g:flow#enable = 0

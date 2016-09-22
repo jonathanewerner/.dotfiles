@@ -8,8 +8,7 @@ function! Save()
 endfunction
 
 nnoremap <leader>s :w!<bar><CR>
-nnoremap <leader>t :call Save()<cr>
-
+nnoremap <silent> <leader>t :FlowType<cr>
 
 
 " Search
