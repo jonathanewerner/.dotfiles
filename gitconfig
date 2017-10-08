@@ -11,12 +11,23 @@
 [alias]
 	up = pull --rebase
 	deploy = subtree push --prefix dist origin gh-pages
+	pr= pull-request
 	co = checkout
-	ci = commit
+	undo = reset HEAD~
 	nb = checkout -b
 	rbr = push origin --delete
 	rb = branch -d
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lga = ! "git lg $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
+	# first do this to amend a prior commit
+	fix = commit --fixup
+	# then do this to apply
+	cifix = rebase -i --autosquash
+	fixci = rebase -i --autosquash
+	squ = commit --squash
+
+# tips
+# :/"increase test timeout" -> pathspec for commit matching the given string
 
 [color]
 	diff = auto
@@ -60,7 +71,7 @@
 	clean = git-lfs clean %f
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

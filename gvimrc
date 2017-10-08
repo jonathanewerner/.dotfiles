@@ -9,8 +9,8 @@ set guioptions-=L  "remove left-hand scroll bar
 " set guifont=Menlo\ Regular:h14
 
 " change this interactively: "set guifont=*", then "set guifont?"
-" set guifont=InputMono:h14
-set guifont=Fira\ Code:h15
+" set guifont=InputMono:h16
+set guifont=Fira\ Code:h17
 " set macligatures
 " set linespace=6
 set linespace=6
@@ -54,3 +54,5 @@ set guiheadroom=0
 	cnoremap <D-r> <C-r>
 	cnoremap <D-p> <C-p>
 	cnoremap <D-n> <C-n>
+
+let $PATH="node_modules/.bin:" . $PATH

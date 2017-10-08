@@ -64,3 +64,10 @@ source <(npm completion)
 # http://superuser.com/questions/836883/increasing-yosemite-maxfile-limit-for-application
 ulimit -n 65536
 ulimit -u 2048
+
+# OPAM configuration
+. /Users/jwerner/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+export PATH="$HOME/.yarn/bin:$HOME/pear/bin:$PATH"
+export YARN_CI_LOCK_TMP_PATH="$HOME/wish/.tmp"
+

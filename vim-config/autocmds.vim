@@ -4,10 +4,15 @@
 augroup custom.python
   autocmd!
   au FileType python set iskeyword -=.
+  au FileType python set tabstop=8
+  au FileType python set expandtab
+  au FileType python set shiftwidth=4
+  au FileType python set softtabstop=4
 augroup END
 
 augroup custom.html
   autocmd!
+  au FileType html syntax off
   au FileType html set shiftwidth=2
   au FileType html set tabstop=2
 augroup END
@@ -42,6 +47,8 @@ augroup custom.js
   autocmd!
   au FileType javascript set shiftwidth=2
   au FileType javascript set tabstop=2
+	" autocmd FileType javascript set formatprg=prettier-eslint\ --stdin\ --eslintPath\ /Users/jwerner/wish/prettier-eslint-setup/node_modules/eslint\ --prettierPath\ /Users/jwerner/wish/prettier-eslint-setup/node_modules/prettier
+	" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 augroup END
 
 augroup custom.less
@@ -49,6 +56,11 @@ augroup custom.less
   au BufRead *.less set ft=less
   au BufRead *.less.module set ft=less
   au BufRead *.less.global set ft=less
+augroup END
+
+augroup custom.fastlane
+  autocmd!
+  au BufRead Fastfile set ft=ruby
 augroup END
 
 " source dotfiles -----------------------------------------------------------------

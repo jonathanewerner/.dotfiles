@@ -8,11 +8,24 @@ function! Save()
 endfunction
 
 nnoremap <leader>s :w!<bar><CR>
-nnoremap <silent> <leader>t :FlowType<cr>
+nnoremap s :w!<bar><CR>
 
+
+function! Autoformat()
+  if filereadable("./node_modules/.bin/mesaic-codeformat")
+		write!
+		silent !./node_modules/.bin/mesaic-codeformat %
+  else
+		write!
+		silent !./node_modules/.bin/prettier --single-quote --jsx-bracket-same-line --write --no-semi %
+	endif
+endfunction
+nnoremap <silent> <leader>f :call Autoformat()<cr>
+" nnoremap <silent> <leader>F
 
 " Search
 nnoremap <leader>S :Ags<space>
+nnoremap S :Ags<space>
 
 " Close
 noremap <silent> <leader>x :close<cr>
@@ -27,6 +40,8 @@ noremap <leader>m :Move <C-r>%
 nnoremap <leader>u *Nciw
 xnoremap <leader>u y/<C-r>"<CR>Ngvc
 
+nnoremap <leader>U :UltiSnipsEdit<cr>
+
 " Visual split
 nnoremap <silent> <leader>y :vs<cr>
 
@@ -37,7 +52,7 @@ nnoremap <silent> <leader>o :b#<cr>
 nnoremap <silent> <leader>c :CtrlP ~/.dotfiles<cr>
 nnoremap <silent> <leader>1 :CtrlP ~/veloyo/veloyo/common<cr>
 nnoremap <leader>5 :e ~/veloyo/config-development/
-nnoremap <leader>n :CtrlP ~/Google\ Drive/txt/tech<cr>
+nnoremap <leader>t :e ~/mesaic/mesaic/NOTES.md<cr>
 
 function! Macro()
 	iunmap <esc>

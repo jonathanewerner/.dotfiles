@@ -3,6 +3,8 @@
 "
 inoremap <esc> <esc>l
 
+nnoremap <silent> } :ALENextWrap<cr>
+nnoremap <silent> { :ALEPreviousWrap<cr>
 nnoremap Q q
 nnoremap l o
 nnoremap o l
@@ -86,7 +88,6 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 "
 " Function keys -----------------------------------------------------------------------------------------------
 "
-nnoremap <F2> :UltiSnipsEdit<cr>
 nnoremap <F3> :e ~/.cache/ctrlp/mru/cache.txt<cr>
 nnoremap <F5> :source %<cr>
 
@@ -140,3 +141,6 @@ nnoremap <S-F9> vip :sort '[\'"].*[\'"]' r<CR>
 " nnoremap :g/ :g/\v
 " nnoremap <right> :bn<cr>
 " nnoremap <left> :bp<cr>
+
+" sum of numbers in selection
+xnoremap gs !awk '{print; total+=$2}END{print total}'<cr>

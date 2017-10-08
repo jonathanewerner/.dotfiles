@@ -166,3 +166,13 @@ Source modules/statusline
 
 " Don't jump one char left when leaving insert mode
 " au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
+
+" performance tweak
+set synmaxcol=250
+syntax sync minlines=256
+
+
+" TIP: debug scrolling slowness: find expensive syntax highlighting regexes:
+" - syntime on
+" - scroll around
+" - syntime report

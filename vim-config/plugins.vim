@@ -7,7 +7,9 @@ Source modules/plugins/ctrlp
 
 Source modules/plugins/ultisnips
 Plugin jonathanewerner/vim-javascript-snippets
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "UltiSnips/javascript-no-semicolons"]
+let g:UltiSnipsSnippetsDir = "~/.vim-config/UltiSnips"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim-config/UltiSnips']
 
 Source modules/plugins/syntastic
 
@@ -15,7 +17,9 @@ Source modules/plugins/fugitive
 
 " Source modules/plugins/semantic-highlight
 
-Source modules/plugins/pair-tools
+" Source modules/plugins/pair-tools
+" let g:pairtools_vim_tagwrench = 0
+" let g:pairtools_vim_tagwrenchhook = 'tagwrench#BuiltinNoHook'
 " Plugin jiangmiao/auto-pairs
 " Plugin vim-scripts/auto-pairs-gentle
 " Plugin kana/vim-smartinput
@@ -146,5 +150,35 @@ Plugin kballard/vim-swift
 " Plugin vim-scripts/groovyindent
 Plugin vim-scripts/groovyindent-unix
 
-Plugin flowtype/vim-flow
-let g:flow#enable = 0
+" Plugin flowtype/vim-flow
+" let g:flow#enable = 0
+
+" Plugin maralla/validator.vim
+" let g:validator_permament_sign = 1
+" let g:validator_javascript_checkers = ['eslint']
+" let g:validator_javascript_eslint_binary = 'node_modules/.bin/eslint'
+" " let g:validator_javascript_eslint_args = '--quiet --cache'
+" let g:validator_error_msg_format = "[ ● %d/%d issues ]"
+" let g:validator_permament_sign = 1
+" Plugin tmhedberg/matchit
+Plugin michaeljsmith/vim-indent-object
+runtime macros/matchit.vim
+
+" Plugin w0rp/ale
+" let g:ale_sign_column_always = 1
+" let g:ale_javascript_eslint_executable='node_modules/.bin/eslint_d'
+" let g:ale_javascript_flow_use_global=1
+" let g:ale_statusline_format = ['   %d ✗', ' %d ⚠', '']
+" let g:ale_sign_error = '✗'
+" let g:ale_sign_warning = '⚠'
+" let g:ale_linters = {
+" \   'javascript': ['eslint', 'flow'],
+" \}
+" " let g:ale_lint_delay=350
+" let g:ale_lint_on_save=1
+" let g:ale_lint_on_enter=1
+" let g:ale_history_enabled=0
+" let g:ale_lint_on_text_changed=0
+
+" Plugin reedes/vim-colors-pencil
+" colorscheme pencil

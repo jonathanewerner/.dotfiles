@@ -1,8 +1,8 @@
 #/usr/bin/env sh
 e() {
-  mvim --servername vim --remote-silent "$@"
+  macvim --servername vim --remote-silent "$@"
 }
-alias ec="mvim --servername vim"
+alias ec="macvim --servername vim"
 
 m() {
   mkdir $1 && cd $1
@@ -66,7 +66,6 @@ alias npmig="sudo npm install -g"
 alias goo='chromium'
 # alias diff-configs="fs=('01-api-server' '02-auth-server' '03-website' '04-admin' '05-service-web-client'); for f in $fs; do echo $f; echo '-------------'; colordiff -y <(cat config/$f.json | jq '.apps[0].env' | json -k) <(cat deployment/config/$f-int.json | jq '.apps[0].env' | json -k); done"
 
-alias git-clean-remote='git remote prune origin'
 alias loc="find . -type f | xargs wc -l | sort -k 1 -g"
 
 # calc stuff
@@ -90,49 +89,28 @@ alias rn-debug="adb shell input keyevent 82 && sleep 0.3 && adb shell input keye
 alias rn-menu="adb shell input keyevent 82"
 alias rn-stop="adb shell am force-stop com.veloyonative"
 alias rn-log="adb logcat *:S ReactNative:I ReactNativeJS:I"
-alias rn-start="watchman watch-del-all && watchman-setup && export NODE_ENV=native && react-native start"
+alias rn-start="watchman watch-del-all && watchman-setup && export NODE_ENV=native && react-native start --skipflow --verbose"
+alias rn-start-fresh="watchman watch-del-all && watchman-setup && export NODE_ENV=native && react-native start --skipflow --verbose --reset-cache"
 # alias npm="pnpm"
-alias g="git"
-alias ws="nohup ~/bin/WebStorm-145.184.5/bin/webstorm.sh"
+alias g="hub"
 
 # docker run --rm -it -e CONFIGURATION=/etc/veloyo/overlays/wish-website.json -v /etc/veloyo:/etc/veloyo -v /var/cache/veloyo:/var/cache/veloyo hub.veloyo.com:5000/veloyo/wish-website:a31feea npm run updateCache
 
 alias npm-wish="npm --userconfig=~/veloyo/.npmrc"
 alias npm-setup="npm install --save-dev babel-cli babel-core babel-preset-es2015 babel-preset-stage-1 babel-register codecov eslint eslint-config-jonathanewerner ghooks npm-run-all nyc rimraf with-package mocha babel-plugin-espower power-assert"
 
-alias wish-api='cd ~/wish/wish/api && NODE_ENV=development nodemon index.js | bunyan -c "!this.req" -L -o short'
-alias wish-auth='cd ~/wish/wish/auth && NODE_ENV=develompent forever --uid auth -a start index.js'
-alias wish-service='cd ~/wish/wish/service && forever --uid service -a start build/server/server.js start'
-alias wish-partner='cd ~/wish/wish/partner && forever --uid partner -a start build/server/server.js start'
-alias wish-admin='cd ~/wish/wish/admin && forever --uid admin -a start build/server/server.js start'
-alias wish-docs='cd ~/wish/wish/docs && forever --uid docs -a start build/server/server.js start'
-alias wish-website='cd ~/wish/wish/website && forever --uid website -a start build/server/server.js start'
-alias wish-wish-website='cd ~/wish/wish/wish-website && forever --uid wish-website -a start build/server/server.js start'
 alias tail='tail -q'
-npm-sync() {
-	moduleName=$(basename $(pwd))
-	to=$1
-	sane "/usr/bin/rsync -a --exclude .git --exclude examples --exclude node_modules ./ $to/node_modules/$moduleName" . --glob='{package.json,modules/**/*.js}'
-}
-npm-sync-react-router-native() {
- (cd ~/projects/react-router-native && npm-sync ~/wish/wish/partner)
-}
-wish-clear-logs() {
-	ps=('admin' 'api' 'auth' 'docs' 'partner' 'service' 'website' 'wish-website')
-	for p in $ps; do
-		echo '' >! ~/.forever/$p.log
-	done
-}
 
-wish-logs() {
-  wish-clear-logs
-	tail -q -f ~/.forever/*.log | bunyan -c '!this.req' -L -o short
-}
-wish-logs-with-reqs() {
-  wish-clear-logs
-	tail -q -f ~/.forever/*.log | bunyan -L -o short
-}
-alias pm2-logs-with-reqs="pm2 logs --raw | bunyan -L"
+# wish() { (cd ~/wish/wish &>/dev/null && pm2 startOrRestart ecosystem.config.js) }
+# wish-service() { (cd ~/wish/wish &>/dev/null && pm2 startOrRestart ecosystem.config.js --only service) }
+# wish-admin() { (cd ~/wish/wish &>/dev/null && pm2 startOrRestart ecosystem.config.js --only admin) }
+# wish-api() { (cd ~/wish/wish &>/dev/null && pm2 startOrRestart ecosystem.config.js --only api) }
+# wish-partner() { (cd ~/wish/wish &>/dev/null && pm2 startOrRestart ecosystem.config.js --only partner) }
+alias forever='echo "forever is dead"'
+
+# wish-logs() {
+# 	pm2 logs --raw $1 | bunyan -c "!this.req" -L -o short
+# }
 
 # Remove zsh weirdness when dealing with curl
 alias curl="noglob curl"
@@ -140,20 +118,113 @@ ls-last() {
 	ls -lt "$@" | head -n1
 }
 
-# ❯ ag "^import.+wish-react-[\w-]+" --nofilename | grep -o "wish-react-[\w-]+" | sort |  uniq | sed "s/^/'/" | sed "s/$/',/"
-add() {
-  # (cd ~/wish/wish/packages/$1 && peerlink && cd ~/wish/wish/partner && npm run updatePackageJson && npm run install:native && peerlink $1)
-  (cd ~/wish/wish/packages/$1 && peerlink && cd ~/wish/wish/partner && peerlink $1)
+preview () {
+    if [ -z "$*" ]; then
+        echo "Usage: preview [FILE]"
+    else
+        open -f -a /Applications/Preview.app
+    fi
 }
 
-push() {
-  fastlane codepush environment:"int" variant_name:"hermes" && fastlane codepush environment:"int" variant_name:"veloyo"
+png-icon() {
+	# input: e.g. "chat"
+	cd ~/wish/wish/packages/mesaic-icons
+	svgexport $1.sprite.svg $1@1x.png 32:
+	svgexport $1.sprite.svg $1@1.5x.png 48:
+	svgexport $1.sprite.svg $1@2x.png 64:
+	svgexport $1.sprite.svg $1@3x.png 96:
+	svgexport $1.sprite.svg $1@4x.png 128:
+	cd -
 }
 
-font-update() {
-		env cp -rf ~/Downloads/fontello/config.json ~/wish/wish/packages/wish-react-svg/iconFontConfig.ios.json
-		env cp -rf ~/Downloads/fontello/config.json ~/wish/wish/partner/node_modules/wish-react-svg/iconFontConfig.ios.json
-		env cp -rf ~/Downloads/fontello/config.json ~/wish/wish/partner/ios/assets/icon-font/hermes-partner/config.json
-		env cp -rf ~/Downloads/fontello/font/fontello.ttf ~/wish/wish/partner/ios/assets/icon-font/hermes-partner/fontello.ttf
-		env cp -rf ~/Downloads/fontello/font/fontello.ttf ~/wish/wish/partner/ios
+# Web server with gzip
+# alias serve='env ws -c'
+
+# interactive killing of apps
+alias fkill='fkill'
+
+function mesaic-start () {
+	cd ~/mesaic/mesaic
+  pm2 startOrRestart ecosystem.config.js --only api
+	sleep 4
+  pm2 startOrRestart ecosystem.config.js --only service &
+  pm2 startOrRestart ecosystem.config.js --only partner &
+  pm2 startOrRestart ecosystem.config.js --only admin &
 }
+
+alias mesaic-update='cd ~/wish/wish && npm run all:updatePackageJson && yarn && cd service && yarn && cd ../admin && yarn && cd ../api && yarn'
+alias mesaic-build-admin='cd ~/mesaic/mesaic/admin && rm build/cache && rm build/server; npm run buildServer && CONFIGURATION=../packages/mesaic-client-config/dev.yaml:./config/locals.yaml npm run buildClient -- --variant f81c463b-a7a1-4198-b41c-0ca54c0ebf75 && pm2 restart admin'
+alias mesaic-build-service='cd ~/mesaic/mesaic/service && rm build/cache && rm build/server; npm run buildServer && VERSION=dev CONFIGURATION=../packages/mesaic-client-config/dev.yaml:./config/locals.yaml npm run buildClient -- --variant a0950436-c4f7-4870-9003-454fcd9a0e47 && pm2 restart service'
+
+mesaic-perf-admin() {
+	cd ~/mesaic/mesaic/admin
+  rm node_modules/.cache
+	rm build/cache
+	rm build/server
+	npm run buildServer
+	CONFIGURATION=../packages/mesaic-client-config/dev.yaml:./config/locals.yaml npm run buildClient -- --variant f81c463b-a7a1-4198-b41c-0ca54c0ebf75
+  source-map-explorer build/cache/admin/app-*.js
+}
+
+alias mesaic-my-commits="rm /tmp/commits.txt; g log --oneline --pretty=format:'%h | %<(80,trunc)%s | %cr %an' --abbrev-commit | grep Jonathan |  sed -e 's/\s\+Jonathan.\+//' > /tmp/commits.txt; e /tmp/commits.txt"
+alias mesaic-loc='mesaic-loc ~/wish/wish'
+alias cdtmp='cd `mktemp -d /tmp/XXXXXX`'
+alias mesaic-user-story-map='cd ~/wish/wish/e2e && node stories-json.js && env cp -f stories.json ~/projects/mesaic-user-story-map/src && cd ~/projects/mesaic-user-story-map && yarn build && env ws -c -d build'
+alias mesaic-user-story-map-copy-json='cd ~/wish/wish/e2e && node stories-json.js && env cp -f stories.json ~/projects/mesaic-user-story-map/src'
+alias kill-dangling-chromes='ps aux | grep "Google\ Chrome.+\-\-disable-notifications" | grep -v grep | awk "{print $2}" | xargs -n1 kill'
+m-recent-reqs() {
+	awslogs get clusterA/api --start="30m ago" --filter-pattern '{ ($.name = "api") && ($.hostname = "production*") && ($.req_id = *) && ($.req.headers.user-agent != ELB-HealthChecker*) && ($.req.url != "/status") && ($.req.url != '\*FetchVariantsQuery\*')}' | sed -e 's/^[^\{]\+//g' | bunyan -o json | jq '.req.url' | sort | uniq -c | sort -nr | sed 's/\"//g'
+}
+
+m-prs() {
+  FILE=~/mesaic/changelog/$(date '+%Y-%m-%d%n').txt
+  node ~/mesaic/scripts/prs-merged-since-last-live-deploy >| $FILE && e $FILE
+}
+alias m-kube-top-all-pods='kubectl --context cluster-a.mesaic.io top pods --all-namespaces | grep -vP "(kube-|default-http|nginx-ingress)" | sort'
+alias m-kube-nodes-resource-usage='kubectl --context cluster-a.mesaic.io top node'
+alias m-kube-pods'kubectl --context cluster-a.mesaic.io get pods -o wide --all-namespaces | grep -vP "(kube-|default-http|nginx-ingress)"'
+alias m-kube-pods-for-node='kubectl --context cluster-a.mesaic.io get pods -o wide --all-namespaces | grep'
+alias m-kube-nodes-cpu-utilisation='kubectl --context cluster-a.mesaic.io get nodes | grep node | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo   {} ; kubectl --context cluster-a.mesaic.io describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+function m-kube-avg-memory-for-project() {
+  project=$1
+  kubectl --context cluster-a.mesaic.io top pods --all-namespaces | grep -vP "(kube-|default-http|nginx-ingress)" | sort | grep $project | awk '{ print $4 }' | sed 's/Mi//' | jq -s 'add/length'
+}
+function m-kube-avg-cpu-for-project() {
+  project=$1
+  kubectl --context cluster-a.mesaic.io top pods --all-namespaces | grep -vP "(kube-|default-http|nginx-ingress)" | sort | grep $project | awk '{ print $3 }' | sed 's/m//' | jq -s 'add/length'
+}
+
+function m-kube-cluster-ram() {
+  AVG_RAM=$(m-kube-nodes-resource-usage | awk '{ print $4 }' | tail -n +2 | sed 's/\Mi//' | jq -s 'add/length')
+  echo ${AVG_RAM}MB avg
+}
+
+function m-kube-cluster-cpu() {
+  AVG_CPU=$(m-kube-nodes-resource-usage | awk '{ print $3 }' | tail -n +2 | sed 's/\%//' | jq -s 'add/length')
+  echo ${AVG_CPU}% avg
+}
+
+m-load-last-run() {
+  cd ~/mesaic/mesaic/load-testing/results
+  cat $(ls -ht | grep -v _vis | head -n1) | jq '.results[] | {apiCount: .input.apiCount, c: .input.c, requests: .input.requests, cAPI: .input.concurrentUserSessionsPerApi}'
+}
+
+function getcpid() {
+    cpids=`pgrep -P $1|xargs`
+		echo "[$1 (main)] $(ps -o rss -p $1 | tail -n1)"
+
+    for cpid in $cpids;
+    do
+        echo "[$cpid] $(ps -o rss -p $cpid | tail -n1)"
+        # getcpid $cpid
+    done
+		echo '-------------'
+
+}
+alias package-json-update='npm-check -s -u -E'
+alias remove-color="sed -i -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
+git-clean() {
+	git remote prune origin && git branch --merged master | grep -v 'master' | xargs git branch -d
+}
+pip3='python3 -m pip'
+alias serve='python -m SimpleHTTPServer'

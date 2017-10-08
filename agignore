@@ -10,7 +10,6 @@ Android
 .AndroidStudio
 .AndroidStudioBeta
 .*
-bin
 build
 IdeaProjects
 dev/AndroidStudioProjects
@@ -18,3 +17,6 @@ dev/archive
 veloyo
 Google Drive
 *.log
+yarn.lock
+yarn-ci.lock
+NOTES.md

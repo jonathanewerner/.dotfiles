@@ -60,3 +60,7 @@ Session.vim
 .lvimrc
 
 npm-debug.log
+.eslintcache
+ecosystem.config.js
+NOTES.md
+package-lock.json
