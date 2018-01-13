@@ -23,14 +23,14 @@ let g:ctrlp_prompt_mappings = {
 \ }
 
 
-set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --depth\ 10
-" " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor --depth 10 -g ""'
+set grepprg=rg\ --files\ --color=never\ --glob ""
+" set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --depth\ 10
+" let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor --depth 10 -g ""'
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_use_caching = 1
+" let g:ctrlp_use_caching = 1
 let g:ctrlp_mruf_save_on_update = 1
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:15'
-" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 let g:ctrlp_mruf_max=100
 let g:ctrlp_tilde_homedir=1
 let g:ctrlp_lazy_update = 30

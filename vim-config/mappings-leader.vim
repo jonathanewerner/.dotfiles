@@ -26,6 +26,7 @@ nnoremap <silent> <leader>f :call Autoformat()<cr>
 " Search
 nnoremap <leader>S :Ags<space>
 nnoremap S :Ags<space>
+nnoremap <leader>t :SyntasticToggle<cr>
 
 " Close
 noremap <silent> <leader>x :close<cr>
@@ -52,7 +53,6 @@ nnoremap <silent> <leader>o :b#<cr>
 nnoremap <silent> <leader>c :CtrlP ~/.dotfiles<cr>
 nnoremap <silent> <leader>1 :CtrlP ~/veloyo/veloyo/common<cr>
 nnoremap <leader>5 :e ~/veloyo/config-development/
-nnoremap <leader>t :e ~/mesaic/mesaic/NOTES.md<cr>
 
 function! Macro()
 	iunmap <esc>

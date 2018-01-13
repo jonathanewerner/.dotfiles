@@ -4,10 +4,10 @@ if has('statusline')
   " Broken down into easily includeable segments
   " set statusline=%{getcwd()}/          " current dir
   set statusline+=%<%f\    " Filename
-  set statusline+=%w%h%m%r " Options
+  " set statusline+=%w%h%m%r " Options
   set statusline+=%#error#
   set statusline+=%*
-  set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%{SyntasticStatuslineFlag()}
   " set statusline+=%{ALEGetStatusLine()}
 
   let g:syntastic_enable_signs=1

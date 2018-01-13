@@ -4,7 +4,7 @@
 [hub]
 	protocol = https
 [user]
-	name = Jonathan Werner
+	name = Jonathan Glasmeyer
 	email = jwerner@posteo.de
 [credential]
 	helper = cache --timeout=86400
@@ -17,7 +17,8 @@
 	nb = checkout -b
 	rbr = push origin --delete
 	rb = branch -d
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	dif = diff --ignore-all-space --color-words --word-diff-regex '[[:alnum:]_]+|[^[:alnum:]_[:space:]]+'
+	lg = log --since=30.days --color --pretty=format:'%C(red)%h%C(reset)%C(yellow) %C(green) %cr %C(reset) %s %C(7)<%an> %d %Creset' --abbrev-commit
 	lga = ! "git lg $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
 	# first do this to amend a prior commit
 	fix = commit --fixup
@@ -66,9 +67,10 @@
 [gui]
 	editor = gvim --servername vim --remote-silent
 [filter "lfs"]
-	smudge = git-lfs smudge %f
 	required = true
-	clean = git-lfs clean %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =

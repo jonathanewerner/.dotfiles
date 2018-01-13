@@ -17,6 +17,11 @@ augroup custom.html
   au FileType html set tabstop=2
 augroup END
 
+augroup custom.mycolorscheme
+  autocmd!
+  au BufWritePost $HOME/.vim/pack/jonathanglasmeyer/start/monochrome-colorscheme/rnb.erb silent !source ./colors/monochrome.vim
+augroup END
+
 augroup custom.tex
   autocmd!
   au FileType tex set ft=plaintex

@@ -11,7 +11,7 @@ let g:UltiSnipsSnippetsDir = "~/.vim-config/UltiSnips"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim-config/UltiSnips']
 
-Source modules/plugins/syntastic
+" Source modules/plugins/syntastic
 
 Source modules/plugins/fugitive
 
@@ -43,9 +43,7 @@ Plugin gabesoft/vim-ags
 Plugin Valloric/YouCompleteMe
 " Don't special case completion after dot (".")
 let g:ycm_filetype_specific_completion_to_disable = { 'javascript': 1 }
-  " autocmd CompleteDone * pclose
-
-" ----------------------------------------------------------------------------
+  autocmd CompleteDone * pclose
 
 " Argumentative aids with manipulating and moving between function arguments.
 Plugin PeterRincker/vim-argumentative
@@ -102,14 +100,14 @@ Plugin gerw/vim-HiLinkTrace
 "
 " File-type specific
 "
-Plugin gavocanov/vim-js-indent
-Plugin jonathanewerner/vim-javascript-syntax
-Plugin hail2u/vim-css3-syntax
-Plugin othree/html5.vim
+" Plugin gavocanov/vim-js-indent
+" Plugin jonathanewerner/vim-javascript-syntax
+" Plugin hail2u/vim-css3-syntax
+" Plugin othree/html5.vim
 " Plugin elixir-lang/vim-elixir
-Plugin groenewege/vim-less
-Plugin elzr/vim-json
-Plugin drmingdrmer/vim-syntax-markdown
+" Plugin groenewege/vim-less
+" Plugin elzr/vim-json
+" Plugin drmingdrmer/vim-syntax-markdown
 
 " Plugin othree/yajs.vim
 " Plugin pangloss/vim-javascript
@@ -135,7 +133,7 @@ set background=light
 " Plugin jonathanfilip/vim-lucius
 
 Plugin NLKNguyen/papercolor-theme
-colorscheme PaperColor
+colorscheme monochrome
 
 Plugin coot/CRDispatcher
 Plugin coot/EnchantedVim
@@ -146,9 +144,9 @@ let g:VeryMagicRange = 1
 Plugin vim-scripts/BufOnly.vim
 Plugin tpope/vim-abolish
 " Plugin keith/swift.vim
-Plugin kballard/vim-swift
+" Plugin kballard/vim-swift
 " Plugin vim-scripts/groovyindent
-Plugin vim-scripts/groovyindent-unix
+" Plugin vim-scripts/groovyindent-unix
 
 " Plugin flowtype/vim-flow
 " let g:flow#enable = 0
@@ -164,21 +162,24 @@ Plugin vim-scripts/groovyindent-unix
 Plugin michaeljsmith/vim-indent-object
 runtime macros/matchit.vim
 
-" Plugin w0rp/ale
-" let g:ale_sign_column_always = 1
-" let g:ale_javascript_eslint_executable='node_modules/.bin/eslint_d'
-" let g:ale_javascript_flow_use_global=1
-" let g:ale_statusline_format = ['   %d ✗', ' %d ⚠', '']
-" let g:ale_sign_error = '✗'
-" let g:ale_sign_warning = '⚠'
-" let g:ale_linters = {
-" \   'javascript': ['eslint', 'flow'],
-" \}
-" " let g:ale_lint_delay=350
+Plugin w0rp/ale
+let g:ale_sign_column_always = 1
+let g:ale_javascript_eslint_executable='node_modules/.bin/eslint_d'
+let g:ale_javascript_flow_use_global=1
+let g:ale_statusline_format = ['   %d ✗', ' %d ⚠', '']
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '!'
+let g:ale_linters = {
+\   'javascript': ['eslint', 'flow'],
+\}
 " let g:ale_lint_on_save=1
-" let g:ale_lint_on_enter=1
-" let g:ale_history_enabled=0
-" let g:ale_lint_on_text_changed=0
+" let g:ale_lint_on_enter=0
+" let g:ale_lint_on_text_changed='never'
+" let g:ale_lint_delay=300
+let g:ale_linters = {
+\   'javascript': ['eslint', 'flow'],
+\   'tex': [],
+\}
 
 " Plugin reedes/vim-colors-pencil
 " colorscheme pencil

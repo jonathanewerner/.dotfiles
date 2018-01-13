@@ -1,9 +1,8 @@
-init.author.name=Jonathan Werner
-init.author.email=jwe@posteo.de
-init.author.url=http://jonathanwerner.net/
+init.author.name=Jonathan Glasmeyer
+init.author.email=glasmeyer@posteo.de
+init.author.url=http://jonathanglasmeyer.com/
 init.licence=MIT
-progress=false
 username=jonathanewerner
-email=jwe@posteo.de
+email=glasmeyer@posteo.de
 loglevel=warn
 level=info
