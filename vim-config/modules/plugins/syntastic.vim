@@ -33,4 +33,4 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_enable_highlighting=1
+Let g:syntastic_enable_highlighting=1

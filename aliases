@@ -60,9 +60,19 @@ preview () {
 # interactive killing of apps
 alias fkill='fkill'
 
-alias mesaic-update='cd ~/wish/wish && npm run all:updatePackageJson && yarn && cd service && yarn && cd ../admin && yarn && cd ../api && yarn'
-alias mesaic-build-admin='cd ~/mesaic/mesaic/admin && rm build/cache && rm build/server; npm run buildServer && CONFIGURATION=../packages/mesaic-client-config/dev.yaml:./config/locals.yaml npm run buildClient -- --variant f81c463b-a7a1-4198-b41c-0ca54c0ebf75 && pm2 restart admin'
-alias mesaic-build-service='cd ~/mesaic/mesaic/service && rm build/cache && rm build/server; npm run buildServer && VERSION=dev CONFIGURATION=../packages/mesaic-client-config/dev.yaml:./config/locals.yaml npm run buildClient -- --variant a0950436-c4f7-4870-9003-454fcd9a0e47 && pm2 restart service'
+MESAIC_CFG=":./config/locals.yaml:./config/dev.yaml:~/mesaic/mesaic/packages/mesaic-client-config/dev.yaml"
+alias mesaic-admin="cd ~/mesaic/mesaic/admin && CONFIGURATION=:./config/locals.yaml:./config/dev.yaml:~/mesaic/mesaic/packages/mesaic-client-config/dev.yaml node ./build/server/server start | bunyan -c '(!this.req || this.err) && !/gm/.test(this.msg)' -L"
+BUNYAN_CFG="(!this.req || this.err) && !/gm/.test(this.msg)"
+
+alias m-api="cd ~/mesaic/mesaic/api >/dev/null && CONFIGURATION=./config/locals.yaml:./config/dev.yaml node index.js | bunyan -c '$BUNYAN_CFG' -L -o short"
+alias m-admin="cd ~/mesaic/mesaic/admin >/dev/null && VERSION=foo CONFIGURATION=~/mesaic/additional-configs/admin-siteadmin.json:$MESAIC_CFG node ./build/server/server start | bunyan -c '$BUNYAN_CFG' -L -o short"
+alias m-admin-build-prod="cd ~/mesaic/mesaic/admin >/dev/null && rm build/cache && rm build/server; VERSION=foo npm run buildServer && CONFIGURATION=~/mesaic/additional-configs/admin-siteadmin.json:$MESAIC_CFG VERSION=foo npm run buildClient -- --variant 549d8c2e-9e4f-4ee8-9f37-fe329dabe5eb"
+alias m-admin-fresh="cd ~/mesaic/mesaic/admin && npm run buildServerDev && m-admin"
+
+
+alias m-service="cd ~/mesaic/mesaic/service >/dev/null && CONFIGURATION=$MESAIC_CFG node ./build/server/server start | bunyan -c '$BUNYAN_CFG' -L -o short"
+alias m-service-fresh="cd ~/mesaic/mesaic/service && npm run buildServerDev && m-service"
+alias m-partner="cd ~/mesaic/mesaic/service >/dev/null && CONFIGURATION=/Users/jwerner/mesaic/additional-configs/service-partner.json:$MESAIC_CFG node ./build/server/server start | bunyan -c '$BUNYAN_CFG' -L -o short"
 
 mesaic-perf-admin() {
 	cd ~/mesaic/mesaic/admin

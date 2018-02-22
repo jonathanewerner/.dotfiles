@@ -11,7 +11,7 @@ let g:UltiSnipsSnippetsDir = "~/.vim-config/UltiSnips"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim-config/UltiSnips']
 
-" Source modules/plugins/syntastic
+Source modules/plugins/syntastic
 
 Source modules/plugins/fugitive
 
@@ -65,7 +65,7 @@ Plugin kana/vim-textobj-entire
 Plugin machakann/vim-textobj-delimited
 
 " Vim sugar for the UNIX shell commands that need it the most. Features include:
-Plugin tpope/vim-eunuch
+" Plugin tpope/vim-eunuch
 
 " :Verbose: Capture the output of a :verbose invocation into the preview window.
 Plugin tpope/vim-scriptease
@@ -162,24 +162,25 @@ Plugin tpope/vim-abolish
 Plugin michaeljsmith/vim-indent-object
 runtime macros/matchit.vim
 
-Plugin w0rp/ale
-let g:ale_sign_column_always = 1
-let g:ale_javascript_eslint_executable='node_modules/.bin/eslint_d'
-let g:ale_javascript_flow_use_global=1
-let g:ale_statusline_format = ['   %d ✗', ' %d ⚠', '']
-let g:ale_sign_error = 'X'
-let g:ale_sign_warning = '!'
-let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
-\}
+" Plugin w0rp/ale
+" let g:ale_sign_column_always = 1
+" let g:ale_javascript_eslint_executable='node_modules/.bin/eslint_d'
+" let g:ale_javascript_flow_use_global=1
+" let g:ale_statusline_format = ['   %d ✗', ' %d ⚠', '']
+" let g:ale_sign_error = 'X'
+" let g:ale_sign_warning = '!'
+" let g:ale_linters = {
+" \   'javascript': ['eslint', 'flow'],
+" \}
 " let g:ale_lint_on_save=1
-" let g:ale_lint_on_enter=0
+" " let g:ale_lint_on_enter=0
 " let g:ale_lint_on_text_changed='never'
-" let g:ale_lint_delay=300
-let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
-\   'tex': [],
-\}
+" " let g:ale_lint_delay=300
+" let g:ale_linters = {
+" \   'javascript': ['eslint', 'flow'],
+" \   'less': [],
+" \   'tex': [],
+" \}
 
 " Plugin reedes/vim-colors-pencil
 " colorscheme pencil

@@ -1,8 +1,8 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
-<!--Last edited by Ukelele version 3.0.5.81 on 2016-08-13 at 12:17 (GMT+2)-->
+<!--Last edited by Ukelele version 3.1.0.108 on 2017-04-16 at 17:01 (GMT+2)-->
 <!--Created by Ukelele version 2.2.3 on 2012-11-14 at 22:15 (EST)-->
-<keyboard group="126" id="-26429" name="Workman-Jona" maxout="1">
+<keyboard group="126" id="-6226" name="custom-v2" maxout="1">
 	<layouts>
 		<layout first="0" last="17" mapSet="16c" modifiers="f4"/>
 		<layout first="18" last="18" mapSet="994" modifiers="f4"/>
@@ -94,7 +94,7 @@
 			<key code="47" output="."/>
 			<key code="48" output="&#x0009;"/>
 			<key code="49" action="5"/>
-			<key code="50" output="&#x001B;"/>
+			<key code="50" output="a"/>
 			<key code="51" output="&#x0008;"/>
 			<key code="52" output="&#x0003;"/>
 			<key code="53" output="&#x001B;"/>

@@ -21,6 +21,7 @@ function! Autoformat()
 	endif
 endfunction
 nnoremap <silent> <leader>f :call Autoformat()<cr>
+nnoremap <silent> S :update!<bar>silent
 " nnoremap <silent> <leader>F
 
 " Search
