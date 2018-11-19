@@ -89,7 +89,13 @@ export PATH="$HOME/.yarn/bin:$HOME/pear/bin:$PATH"
 # terminal.app tab title = `pwd`
 precmd () { print -Pn "\e]2;%~\a" }
 
+# prevent Ctrl-D terminating shell session (you need to press ctrl-d 43 times to do it, or type `exit`)
+set -o ignoreeof
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 PROMPT="
 %~ > "
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh

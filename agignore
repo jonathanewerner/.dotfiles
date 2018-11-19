@@ -9,7 +9,6 @@ Android
 .local
 .AndroidStudio
 .AndroidStudioBeta
-.*
 build
 IdeaProjects
 dev/AndroidStudioProjects
@@ -21,3 +20,13 @@ yarn.lock
 yarn-ci.lock
 NOTES.md
 index.android.bundle
+Library
+Applications
+Downloads
+Music
+Documents
+Desktop
+assets
+Google\ Drive
+iCloud\ Drive\ \(Archive\)
+mesaic

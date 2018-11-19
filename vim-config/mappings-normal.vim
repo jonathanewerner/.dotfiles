@@ -73,6 +73,7 @@ nnoremap <bs> zm
 
 " Quickly select text you just pasted:
 noremap gV `[v`]
+noremap gyp :let @+ = expand("%")<CR>
 
 " insert mode easy paste
 
@@ -130,6 +131,10 @@ vnoremap <F9> :sort <CR>
 " <S-F9>: by '/" enclosed string
 vnoremap <S-F9> :sort '[\'"].*[\'"]' r<CR>
 nnoremap <S-F9> vip :sort '[\'"].*[\'"]' r<CR>
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " nnoremap <silent> :: :call ctrlp#init(ctrlp#commandline#id())<cr>
 

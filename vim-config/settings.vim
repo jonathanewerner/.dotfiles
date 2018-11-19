@@ -176,3 +176,7 @@ syntax sync minlines=256
 " - syntime on
 " - scroll around
 " - syntime report
+
+
+" I enabled this so that list indentation works for markdown
+set autoindent

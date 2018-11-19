@@ -50,6 +50,7 @@
 	tool = meld
 	prompt = false
 	keepBackup = false
+	renamelimit = 100000
 [help]
 	autocorrect = 0
 [push]

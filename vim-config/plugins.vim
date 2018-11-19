@@ -11,7 +11,7 @@ let g:UltiSnipsSnippetsDir = "~/.vim-config/UltiSnips"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim-config/UltiSnips']
 
-Source modules/plugins/syntastic
+" Source modules/plugins/syntastic
 
 Source modules/plugins/fugitive
 
@@ -39,6 +39,7 @@ Plugin jonathanewerner/vim-rsi
 
 
 Plugin gabesoft/vim-ags
+let g:ags_args='--path-to-ignore ~/.ignore'
 
 Plugin Valloric/YouCompleteMe
 " Don't special case completion after dot (".")
@@ -107,11 +108,10 @@ Plugin gerw/vim-HiLinkTrace
 " Plugin elixir-lang/vim-elixir
 " Plugin groenewege/vim-less
 " Plugin elzr/vim-json
-" Plugin drmingdrmer/vim-syntax-markdown
 
 " Plugin othree/yajs.vim
-" Plugin pangloss/vim-javascript
-" Plugin mxw/vim-jsx
+Plugin pangloss/vim-javascript
+Plugin mxw/vim-jsx
 " Plugin othree/es.next.syntax.vim
 
 "
@@ -162,25 +162,32 @@ Plugin tpope/vim-abolish
 Plugin michaeljsmith/vim-indent-object
 runtime macros/matchit.vim
 
-" Plugin w0rp/ale
-" let g:ale_sign_column_always = 1
-" let g:ale_javascript_eslint_executable='node_modules/.bin/eslint_d'
-" let g:ale_javascript_flow_use_global=1
-" let g:ale_statusline_format = ['   %d ✗', ' %d ⚠', '']
-" let g:ale_sign_error = 'X'
-" let g:ale_sign_warning = '!'
-" let g:ale_linters = {
-" \   'javascript': ['eslint', 'flow'],
-" \}
-" let g:ale_lint_on_save=1
-" " let g:ale_lint_on_enter=0
-" let g:ale_lint_on_text_changed='never'
-" " let g:ale_lint_delay=300
-" let g:ale_linters = {
-" \   'javascript': ['eslint', 'flow'],
-" \   'less': [],
-" \   'tex': [],
-" \}
+Plugin w0rp/ale
+let g:ale_sign_column_always = 1
+let g:ale_javascript_eslint_executable='node_modules/.bin/eslint_d'
+" let g:ale_javascript_eslint_options='--quiet -c ~/mesaic/minimal-eslint-config/.eslintrc'
+let g:ale_javascript_flow_use_global=1
+let g:ale_statusline_format = ['   %d ✗', ' %d ⚠', '']
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '!'
+let g:ale_linters = {
+\   'javascript': ['eslint', 'flow'],
+\}
+let g:ale_lint_on_save=1
+let g:ale_lint_on_enter=0
+" let g:ale_lint_on_text_changed='always'
+let g:ale_lint_on_text_changed='never'
+" let g:ale_lint_delay=300
+"
+Plugin danro/rename.vim
 
 " Plugin reedes/vim-colors-pencil
 " colorscheme pencil
+hi NonText guifg=#dfdfdf
+" Plugin ap/vim-css-color
+" Plugin vim-scripts/CSSMinister
+" let g:CSSMinisterCreateMappings=0
+" let g:CSSMinisterMapPrefix='\'
+
+" :DeleteHiddenBuffers
+Plugin arithran/vim-delete-hidden-buffers

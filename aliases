@@ -60,41 +60,8 @@ preview () {
 # interactive killing of apps
 alias fkill='fkill'
 
-MESAIC_CFG=":./config/locals.yaml:./config/dev.yaml:~/mesaic/mesaic/packages/mesaic-client-config/dev.yaml"
-alias mesaic-admin="cd ~/mesaic/mesaic/admin && CONFIGURATION=:./config/locals.yaml:./config/dev.yaml:~/mesaic/mesaic/packages/mesaic-client-config/dev.yaml node ./build/server/server start | bunyan -c '(!this.req || this.err) && !/gm/.test(this.msg)' -L"
-BUNYAN_CFG="(!this.req || this.err) && !/gm/.test(this.msg)"
-
-alias m-api="cd ~/mesaic/mesaic/api >/dev/null && CONFIGURATION=./config/locals.yaml:./config/dev.yaml node index.js | bunyan -c '$BUNYAN_CFG' -L -o short"
-alias m-admin="cd ~/mesaic/mesaic/admin >/dev/null && VERSION=foo CONFIGURATION=~/mesaic/additional-configs/admin-siteadmin.json:$MESAIC_CFG node ./build/server/server start | bunyan -c '$BUNYAN_CFG' -L -o short"
-alias m-admin-build-prod="cd ~/mesaic/mesaic/admin >/dev/null && rm build/cache && rm build/server; VERSION=foo npm run buildServer && CONFIGURATION=~/mesaic/additional-configs/admin-siteadmin.json:$MESAIC_CFG VERSION=foo npm run buildClient -- --variant 549d8c2e-9e4f-4ee8-9f37-fe329dabe5eb"
-alias m-admin-fresh="cd ~/mesaic/mesaic/admin && npm run buildServerDev && m-admin"
-
-
-alias m-service="cd ~/mesaic/mesaic/service >/dev/null && CONFIGURATION=$MESAIC_CFG node ./build/server/server start | bunyan -c '$BUNYAN_CFG' -L -o short"
-alias m-service-fresh="cd ~/mesaic/mesaic/service && npm run buildServerDev && m-service"
-alias m-partner="cd ~/mesaic/mesaic/service >/dev/null && CONFIGURATION=/Users/jwerner/mesaic/additional-configs/service-partner.json:$MESAIC_CFG node ./build/server/server start | bunyan -c '$BUNYAN_CFG' -L -o short"
-
-mesaic-perf-admin() {
-	cd ~/mesaic/mesaic/admin
-  rm node_modules/.cache
-	rm build/cache
-	rm build/server
-	npm run buildServer
-	CONFIGURATION=../packages/mesaic-client-config/dev.yaml:./config/locals.yaml npm run buildClient -- --variant f81c463b-a7a1-4198-b41c-0ca54c0ebf75
-  source-map-explorer build/cache/admin/app-*.js
-}
-
-alias mesaic-my-commits="rm /tmp/commits.txt; g log --oneline --pretty=format:'%h | %<(80,trunc)%s | %cr %an' --abbrev-commit | grep Jonathan |  sed -e 's/\s\+Jonathan.\+//' > /tmp/commits.txt; e /tmp/commits.txt"
-alias mesaic-loc='mesaic-loc ~/wish/wish'
 alias kill-dangling-chromes='ps aux | grep "Google\ Chrome.+\-\-disable-notifications" | grep -v grep | awk "{print $2}" | xargs -n1 kill'
-# m-recent-reqs() {
-# 	awslogs get clusterA/api --start="30m ago" --filter-pattern '{ ($.name = "api") && ($.hostname = "production*") && ($.req_id = *) && ($.req.headers.user-agent != ELB-HealthChecker*) && ($.req.url != "/status") && ($.req.url != '\*FetchVariantsQuery\*')}' | sed -e 's/^[^\{]\+//g' | bunyan -o json | jq '.req.url' | sort | uniq -c | sort -nr | sed 's/\"//g'
-# }
-#
-# m-prs() {
-#   FILE=~/mesaic/changelog/$(date '+%Y-%m-%d%n').txt
-#   node ~/mesaic/scripts/prs-merged-since-last-live-deploy >| $FILE && e $FILE
-# }
+
 # alias m-kube-top-all-pods='kubectl --context cluster-a.mesaic.io top pods --all-namespaces | grep -vP "(kube-|default-http|nginx-ingress)" | sort'
 # alias m-kube-nodes-resource-usage='kubectl --context cluster-a.mesaic.io top node'
 # alias m-kube-pods'kubectl --context cluster-a.mesaic.io get pods -o wide --all-namespaces | grep -vP "(kube-|default-http|nginx-ingress)"'
@@ -141,18 +108,42 @@ git-clean() {
 	git remote prune origin && git branch --merged master | grep -v 'master' | xargs git branch -d
 }
 pip3='python3 -m pip'
-alias serve='python -m SimpleHTTPServer'
+# alias serve='python -m SimpleHTTPServer'
 function emulator { cd /Users/jwerner/Library/Android/Sdk/tools && ./emulator "$@" &; }
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
 e() {
-  macvim --servername vim --remote-silent "$@"
+	if [[ "$1" == "" || -d "$1" ]]; then
+			files=$(ag -l '' $1 | fzf -m --bind 'shift-tab:select-all+accept' | xargs echo)
+	else
+			files="$@"
+	fi
+	macvim --servername vim --remote-silent "$@"
 }
 
 alias date1='date +"%Y%m%d%H%M%S"'
 
 f() {
 	rg --files --glob "" | fzf
+}
+alias ag='ag --path-to-ignore ~/.ignore'
+alias m="node ~/mesaic/mesaic/packages/mesaic-cli"
+alias mesaic="node packages/mesaic-cli"
+alias m-docker-prune='docker system prune -a'
+dr() {
+		docker stop mesaic_$1_1
+		docker start mesaic_$1_1
+}
+
+sketches() {
+	(cd ~/scans && pdfimages -j * scan && rmtrash *.pdf && open ~/scans)
+}
+alias inode="node -e 'const lodash = require(\"lodash\"); for (const k in lodash) { global[\"_\" + k] = lodash[k]; }' -i"
+
+alias nl="cd ~/Google\ Drive/Notes && cat *.* | grep -o -P '\#\w\w[\w\/]+' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | grep -v 'binary file' | grep -v '\#inbox'"
+
+n() {
+	cd ~/Google\ Drive/Notes && e "`ag $1 -l | fzf`"
 }

@@ -17,10 +17,22 @@ augroup custom.html
   au FileType html set tabstop=2
 augroup END
 
+augroup custom.markdown
+  autocmd!
+  au FileType markdown set autoindent
+augroup END
+
+function! UpdateMyColorscheme()
+  silent !$HOME/.vim/pack/jonathanglasmeyer/start/monochrome-colorscheme/run.sh
+  silent source $HOME/.vim/pack/jonathanglasmeyer/start/monochrome-colorscheme/colors/monochrome.vim
+endfunction
+
+
 augroup custom.mycolorscheme
   autocmd!
-  au BufWritePost $HOME/.vim/pack/jonathanglasmeyer/start/monochrome-colorscheme/rnb.erb silent !source ./colors/monochrome.vim
+  au BufWritePost $HOME/.vim/pack/jonathanglasmeyer/start/monochrome-colorscheme/rnb.erb call UpdateMyColorscheme()
 augroup END
+
 
 augroup custom.tex
   autocmd!
